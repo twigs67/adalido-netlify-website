@@ -1,19 +1,13 @@
 {
-  "base_url": "https://wutali-nextjs-netlify-blog.netlify.app",
-  "site_title": "Next.js Netlify Blog",
-  "site_description": "Next.js blog template for Netlify",
+  "base_url": "https://adalido.io",
+  "site_title": "Adalido - A Cardano Stake Pool",
+  "site_description": "This is a description of our cardano stake pool",
   "site_keywords": [
-    {
-      "keyword": "Next.js"
-    },
-    {
-      "keyword": "Netlify"
-    },
-    {
-      "keyword": "React"
-    }
+    "cardano",
+    "stake pool",
+    "pool"
   ],
   "posts_per_page": 5,
-  "twitter_account": "@my-account",
-  "github_account": "wutali"
+  "twitter_account": "@LidoAda",
+  "github_account": "twigs67"
 }
