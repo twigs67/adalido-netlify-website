@@ -1,8 +1,11 @@
-import "normalize.css";
 import { AppProps } from "next/app";
-// NOTE: Do not move the styles dir to the src.
-// They are used by the Netlify CMS preview feature.
-import "../../public/styles/global.css";
+import '../public/css/style.css';
+import '../public/css/bootstrap.min.css';
+import '../public/css/animate.css';
+import '../public/css/boxicons.min.css';
+import '../public/css/flaticon.css';
+// import '../public/css/rtl.css';
+import '../public/css/responsive.css'
 
 export default function App({ Component, pageProps }: AppProps) {
   return <Component {...pageProps} />;
