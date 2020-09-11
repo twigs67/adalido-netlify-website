@@ -4,3 +4,4 @@
 
 [[plugins]]
 package = "@netlify/plugin-sitemap"
+package = "netlify-plugin-algolia-export"
