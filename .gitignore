@@ -32,3 +32,7 @@ yarn-error.log*
 
 # mdx
 .mdx-data
+
+.idea/
+.env
+
