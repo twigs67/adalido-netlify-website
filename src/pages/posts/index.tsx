@@ -8,6 +8,7 @@ import { listTags } from "../../lib/tags";
 import {GetStaticProps, NextPage} from "next";
 import config from "../../lib/config";
 import {countPosts} from "../../lib/posts";
+import Layout from "../../components/Layout";
 
 type Props = {
     posts: PostContent[];
@@ -15,7 +16,7 @@ type Props = {
 
 const NewsGrid: NextPage<Props> = ({posts}: Props) => {
     return (
-        <div>
+        <Layout>
           <Navbar />
           <PageBanner
               pageTitle="News Grid"
@@ -29,7 +30,7 @@ const NewsGrid: NextPage<Props> = ({posts}: Props) => {
                 </div>
             </section>
           <Footer />
-        </div>
+        </Layout>
     );
 };
 
