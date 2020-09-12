@@ -1,6 +1,6 @@
 import Head from "next/head";
 import React from "react";
-import styles from "../../public/styles/content.module.css";
+import styles from "../../../public/styles/content.module.css";
 import Author from "../components/Author";
 import Copyright from "../components/Copyright";
 import Date from "../components/Date";

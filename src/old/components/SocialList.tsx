@@ -1,6 +1,6 @@
 import React from "react";
-import Twitter from "../assets/twitter-alt.svg";
-import GitHub from "../assets/github-alt.svg";
+import Twitter from "../../assets/twitter-alt.svg";
+import GitHub from "../../assets/github-alt.svg";
 import config from "../lib/config";
 
 export function SocialList({}) {

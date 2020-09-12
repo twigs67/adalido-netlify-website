@@ -1,12 +1,12 @@
 import { GetStaticProps } from "next";
-import Layout from "../../components/Layout";
-import BasicMeta from "../../components/meta/BasicMeta";
-import OpenGraphMeta from "../../components/meta/OpenGraphMeta";
-import TwitterCardMeta from "../../components/meta/TwitterCardMeta";
-import PostList from "../../components/PostList";
-import config from "../../lib/config";
-import { countPosts, listPostContent, PostContent } from "../../lib/posts";
-import { listTags, TagContent } from "../../lib/tags";
+import Layout from "../../../old/components/Layout";
+import BasicMeta from "../../../old/components/meta/BasicMeta";
+import OpenGraphMeta from "../../../old/components/meta/OpenGraphMeta";
+import TwitterCardMeta from "../../../old/components/meta/TwitterCardMeta";
+import PostList from "../../../old/components/PostList";
+import config from "../../../old/lib/config";
+import { countPosts, listPostContent, PostContent } from "../../../old/lib/posts";
+import { listTags, TagContent } from "../../../old/lib/tags";
 import Head from "next/head";
 
 type Props = {
