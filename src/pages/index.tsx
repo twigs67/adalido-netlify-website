@@ -1,50 +1,49 @@
 import * as React from 'react';
-import { NextPage, NextPageContext } from 'next';
-import Link from 'next/link';
+import {GetStaticProps, NextPage, NextPageContext} from 'next';
 import Navbar from '../layouts/Navbar';
 import MainBanner from '../components/Home/MainBanner';
-import PartnerSlider from '../components/Common/PartnerSlider';
-import About from '../components/Home/About';
 import WhyChooseUs from '../components/Home/WhyChooseUs';
-import Services from '../components/Home/Services';
-import MakeYourBusiness from '../components/Common/MakeYourBusiness';
-import WhatWeOffer from '../components/Home/WhatWeOffer';
-import CaseStudies from '../components/Home/CaseStudies';
-import Testimonials from '../components/Common/Testimonials';
-import Faq from '../components/Home/Faq';
 import News from '../components/Common/News';
 import Footer from '../layouts/Footer';
+import config from "../lib/config";
+import { countPosts, listPostContent, PostContent } from "../lib/posts";
+import { listTags, TagContent } from "../lib/tags";
 
-interface Props {
-    query: { name?: string };
-}
+type Props = {
+    posts: PostContent[];
+    tags: TagContent[];
+    pagination: {
+        current: number;
+        pages: number;
+    };
+};
 
-const Index: NextPage<Props> = ({ query }) => {
-    const greetName = query.name ? query.name : 'World';
-    // return <div>Hello, {greetName}!</div>;
-
+const Index: NextPage<Props> = ({posts, tags, pagination}: Props) => {
     return (
         <div>
             <Navbar />
             <MainBanner />
-            <PartnerSlider />
-            <About />
             <WhyChooseUs />
-            <Services />
-            <MakeYourBusiness />
-            <WhatWeOffer />
-            <CaseStudies />
-            <Testimonials />
-            <Faq />
-            <News />
+            <News posts={posts} tags={tags} pagination={pagination} />
             <Footer />
         </div>
     )
 };
 
-Index.getInitialProps = async (ctx: NextPageContext) => {
-    const { query } = ctx;
-    return { query };
+export const getStaticProps: GetStaticProps = async () => {
+    const posts = listPostContent(1, config.posts_per_page);
+    const tags = listTags();
+    const pagination = {
+        current: 1,
+        pages: Math.ceil(countPosts() / config.posts_per_page),
+    };
+    return {
+        props: {
+            posts,
+            tags,
+            pagination,
+        },
+    };
 };
 
 export default Index;
