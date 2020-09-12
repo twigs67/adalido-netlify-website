@@ -139,3 +139,11 @@ collections:
       - label: "Body"
         name: "body"
         widget: "markdown"
+      - name: "featured_image"
+        label: "Featured image"
+        widget: object
+        fields:
+          - {name: src, label: Image, widget: image}
+          - {name: alt, label: Alt text, widget: string}
+          - {name: title, label: Title, widget: string}
+
