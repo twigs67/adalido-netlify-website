@@ -6,7 +6,7 @@ import News from '../components/news';
 import Footer from '../layouts/Footer';
 import { listPostContent, PostContent } from "../lib/posts";
 import { listTags } from "../lib/tags";
-import Layout from "../layouts/mdx";
+import Layout from "../components/Layout";
 
 type Props = {
     posts: PostContent[];

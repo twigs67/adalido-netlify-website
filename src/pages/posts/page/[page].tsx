@@ -1,5 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from "next";
-import Layout from "../../../layouts/mdx";
+import Layout from "../../../components/Layout";
 import BasicMeta from "../../../components/meta/BasicMeta";
 import OpenGraphMeta from "../../../components/meta/OpenGraphMeta";
 import TwitterCardMeta from "../../../components/meta/TwitterCardMeta";
