@@ -1,14 +1,12 @@
 import React from 'react';
-import Navbar from '../../layouts/Navbar';
 import PageBanner from '../../components/Common/PageBanner';
-import News from "../../components/news";
-import Footer from '../../layouts/Footer';
+import News from "../../components/NewsList";
 import { listPostContent, PostContent } from "../../lib/posts";
 import { listTags } from "../../lib/tags";
 import {GetStaticProps, NextPage} from "next";
 import config from "../../lib/config";
 import {countPosts} from "../../lib/posts";
-import Layout from "../../components/Layout";
+import Layout from "../../layouts/main";
 
 type Props = {
     posts: PostContent[];
@@ -17,19 +15,17 @@ type Props = {
 const NewsGrid: NextPage<Props> = ({posts}: Props) => {
     return (
         <Layout>
-          <Navbar />
           <PageBanner
-              pageTitle="News Grid"
+              pageTitle="Adalido News"
               homePageUrl="/"
               homePageText="Home"
-              activePageText="News Grid"
+              activePageText="Adalido News"
           />
             <section className="news-area pt-100 pb-70">
                 <div className="container">
                     <News posts={posts} />
                 </div>
             </section>
-          <Footer />
         </Layout>
     );
 };

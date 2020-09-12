@@ -2,11 +2,10 @@ import * as React from 'react';
 import {GetStaticProps, NextPage} from 'next';
 import MainBanner from '../components/Home/MainBanner';
 import WhyChooseUs from '../components/Home/WhyChooseUs';
-import News from '../components/news';
-import Footer from '../layouts/Footer';
+import News from '../components/NewsList';
 import { listPostContent, PostContent } from "../lib/posts";
 import { listTags } from "../lib/tags";
-import Layout from "../components/Layout";
+import Layout from "../layouts/main";
 
 type Props = {
     posts: PostContent[];
@@ -27,7 +26,6 @@ const Index: NextPage<Props> = ({posts}: Props) => {
                     <News posts={posts} />
                 </div>
             </section>
-            <Footer />
         </Layout>
     )
 };

@@ -1,25 +1,20 @@
-import React, { Component } from 'react';
-import Navbar from '../layouts/Navbar';
+import React from 'react';
 import PageBanner from '../components/Common/PageBanner';
-import About from '../components/About';
-import Footer from '../layouts/Footer';
+import Index from '../components/About';
+import Layout from "../layouts/main";
 
-class NewsGrid extends Component {
-    render() {
-        return (
-            <React.Fragment>
-                <Navbar />
-                <PageBanner
-                    pageTitle="About Us"
-                    homePageUrl="/"
-                    homePageText="Home"
-                    activePageText="About Us"
-                />
-                <About />
-                <Footer />
-            </React.Fragment>
-        );
-    }
-}
-
-export default NewsGrid;
+const AboutPage = () => {
+    const pageTitle = "About Adalido";
+    return (
+        <Layout>
+            <PageBanner
+                pageTitle={pageTitle}
+                homePageUrl="/"
+                homePageText="Home"
+                activePageText={pageTitle}
+            />
+            <Index />
+        </Layout>
+    )
+};
+export default AboutPage;

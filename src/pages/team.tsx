@@ -1,25 +1,19 @@
-import React, { Component } from 'react';
-import Navbar from '../layouts/Navbar';
+import React from 'react';
 import PageBanner from '../components/Common/PageBanner';
-import TeamCard from '../components/TeamCard';
-import Footer from '../layouts/Footer';
+import Index from '../components/Team';
+import Layout from "../layouts/main";
 
-class NewsGrid extends Component {
-    render() {
-        return (
-            <React.Fragment>
-                <Navbar />
-                <PageBanner
-                    pageTitle="Team"
-                    homePageUrl="/"
-                    homePageText="Home"
-                    activePageText="The Adalido Team"
-                />
-                <TeamCard />
-                <Footer />
-            </React.Fragment>
-        );
-    }
-}
-
-export default NewsGrid;
+const TeamPage = () => {
+    return (
+        <Layout>
+            <PageBanner
+                pageTitle="Team"
+                homePageUrl="/"
+                homePageText="Home"
+                activePageText="The Adalido Team"
+            />
+            <Index />
+        </Layout>
+    )
+};
+export default TeamPage;

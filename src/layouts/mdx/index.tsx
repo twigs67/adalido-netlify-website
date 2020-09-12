@@ -1,18 +1,15 @@
-import Head from "next/head";
 import React from "react";
-import styles from "../../../public/styles/content.module.css";
-import Author from "../../components/Author";
-import Copyright from "../../components/Copyright";
-import Date from "../../components/Date";
-import Layout from "../../components/Layout";
-import BasicMeta from "../../components/meta/BasicMeta";
-import JsonLdMeta from "../../components/meta/JsonLdMeta";
-import OpenGraphMeta from "../../components/meta/OpenGraphMeta";
-import TwitterCardMeta from "../../components/meta/TwitterCardMeta";
-import { SocialList } from "../../components/SocialList";
-import TagButton from "../../components/TagButton";
+import Date from "../../components/Original/Date";
+import Layout from "../../components/Original/Layout";
+import BasicMeta from "../../components/Meta/BasicMeta";
+import JsonLdMeta from "../../components/Meta/JsonLdMeta";
+import OpenGraphMeta from "../../components/Meta/OpenGraphMeta";
+import TwitterCardMeta from "../../components/Meta/TwitterCardMeta";
 import { getAuthor } from "../../lib/authors";
 import { getTag } from "../../lib/tags";
+import PageBanner from "../../components/Common/PageBanner";
+import Footer from "../Footer";
+import NewsPost from "../../components/NewsPost"
 
 type Props = {
     title: string;
@@ -22,6 +19,7 @@ type Props = {
     tags: string[];
     author: string;
 };
+
 export default function Index({
           title,
           date,
@@ -59,35 +57,26 @@ export default function Index({
                     author={authorName}
                     description={description}
                 />
-                <div className={"container"}>
-                    <article>
-                        <header>
-                            <h1>{title}</h1>
-                            <div className={"metadata"}>
-                                <div>
-                                    <Date date={date} />
-                                </div>
-                                <div>
-                                    <Author author={getAuthor(author)} />
-                                </div>
-                            </div>
-                        </header>
-                        <div className={styles.content}>{content}</div>
-                        <ul className={"tag-list"}>
-                            {tags.map((it, i) => (
-                                <li key={i}>
-                                    <TagButton tag={getTag(it)} />
-                                </li>
-                            ))}
-                        </ul>
-                    </article>
-                    <footer>
-                        <div className={"social-list"}>
-                            <SocialList />
-                        </div>
-                        <Copyright />
-                    </footer>
-                </div>
+                <PageBanner
+                    pageTitle={title}
+                    homePageUrl="/posts"
+                    homePageText="News"
+                    activePageText={title}
+                />
+                <NewsPost date={date} author={author} content={content}/>
+                <Footer />
+                <style global jsx>
+                    {`
+                     code {
+                        display: block;
+                        background-color: rgba(27,31,35,.05);
+                        line-height: 1.25rem;
+                        padding: 1rem;
+                        overflow: auto;
+                        margin: 1.75rem 0 0;
+                    }
+                    `}
+                </style>
             </Layout>
         );
     };
