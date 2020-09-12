@@ -10,6 +10,13 @@ export type PostContent = {
   readonly title: string;
   readonly slug: string;
   readonly tags?: string[];
+  readonly author: string;
+  readonly featured_image?: {
+      alt: string,
+      src: string,
+      title: string
+  };
+  excerpt?: string;
 };
 
 let postCache: PostContent[];
@@ -38,6 +45,13 @@ function fetchPostContent(): PostContent[] {
         title: string;
         tags: string[];
         slug: string;
+        author: string;
+        featured_image?: {
+            alt: string,
+            src: string,
+            title: string
+        };
+        excerpt?: string;
       };
       const slug = fileName.replace(/\.mdx$/, "");
 

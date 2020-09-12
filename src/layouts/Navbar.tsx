@@ -86,6 +86,13 @@ class Navbar extends Component {
                                             </a>
                                         </Link>
                                     </li>
+                                    <li className="nav-item">
+                                        <Link href="/posts">
+                                            <a className="nav-link">
+                                                News
+                                            </a>
+                                        </Link>
+                                    </li>
                                 </ul>
                             </div>
                         </div>

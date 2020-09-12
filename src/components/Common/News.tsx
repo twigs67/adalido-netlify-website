@@ -14,7 +14,6 @@ type Props = {
 };
 
 export default function News({posts, tags, pagination}: Props) {
-    console.log(posts);
     return (
         <section className="news-area pt-100 pb-70">
             <div className="container">
