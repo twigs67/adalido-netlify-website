@@ -1,6 +1,7 @@
 import { PostContent } from "../../lib/posts";
 import List from './list';
 import * as React from "react";
+import Layout from "../Layout";
 
 type Props = {
     posts: PostContent[];
@@ -8,8 +9,10 @@ type Props = {
 
 export default function News({posts}: Props) {
     return (
-        <div className="row">
-            {posts.map(post => <List post={post}/>)}
+        <div>
+            <div className="row">
+                {posts.map(post => <List post={post}/>)}
+            </div>
         </div>
     )
 }
