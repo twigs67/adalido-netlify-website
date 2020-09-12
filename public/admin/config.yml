@@ -149,4 +149,3 @@ collections:
       - name: "post_excerpt"
         label: "Post Excerpt"
         widget: "string"
-

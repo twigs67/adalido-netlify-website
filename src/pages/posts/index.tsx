@@ -1,47 +1,49 @@
-import { GetStaticProps } from "next";
-import Layout from "../../components/Layout";
-import BasicMeta from "../../components/meta/BasicMeta";
-import OpenGraphMeta from "../../components/meta/OpenGraphMeta";
-import TwitterCardMeta from "../../components/meta/TwitterCardMeta";
-import PostList from "../../components/PostList";
+import React from 'react';
+import PageBanner from '../../components/Common/PageBanner';
+import News from "../../components/NewsList";
+import { listPostContent, PostContent } from "../../lib/posts";
+import { listTags } from "../../lib/tags";
+import {GetStaticProps, NextPage} from "next";
 import config from "../../lib/config";
-import { countPosts, listPostContent, PostContent } from "../../lib/posts";
-import { listTags, TagContent } from "../../lib/tags";
-import Head from "next/head";
+import {countPosts} from "../../lib/posts";
+import Layout from "../../layouts/main";
 
 type Props = {
-  posts: PostContent[];
-  tags: TagContent[];
-  pagination: {
-    current: number;
-    pages: number;
-  };
+    posts: PostContent[];
 };
-export default function Index({ posts, tags, pagination }: Props) {
-  const url = "/posts";
-  const title = "All posts";
-  return (
-    <Layout>
-      <BasicMeta url={url} title={title} />
-      <OpenGraphMeta url={url} title={title} />
-      <TwitterCardMeta url={url} title={title} />
-      <PostList posts={posts} tags={tags} pagination={pagination} />
-    </Layout>
-  );
-}
+
+const NewsGrid: NextPage<Props> = ({posts}: Props) => {
+    return (
+        <Layout>
+          <PageBanner
+              pageTitle="Adalido News"
+              homePageUrl="/"
+              homePageText="Home"
+              activePageText="Adalido News"
+          />
+            <section className="news-area pt-100 pb-70">
+                <div className="container">
+                    <News posts={posts} />
+                </div>
+            </section>
+        </Layout>
+    );
+};
 
 export const getStaticProps: GetStaticProps = async () => {
-  const posts = listPostContent(1, config.posts_per_page);
-  const tags = listTags();
-  const pagination = {
-    current: 1,
-    pages: Math.ceil(countPosts() / config.posts_per_page),
-  };
-  return {
-    props: {
-      posts,
-      tags,
-      pagination,
-    },
-  };
+    const posts = listPostContent(1, config.posts_per_page);
+    const tags = listTags();
+    const pagination = {
+        current: 1,
+        pages: Math.ceil(countPosts() / config.posts_per_page),
+    };
+    return {
+        props: {
+            posts,
+            tags,
+            pagination,
+        },
+    };
 };
+
+export default NewsGrid;

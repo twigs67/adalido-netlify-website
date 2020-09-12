@@ -1,62 +1,49 @@
-import Layout from "../components/Layout";
-import BasicMeta from "../components/meta/BasicMeta";
-import OpenGraphMeta from "../components/meta/OpenGraphMeta";
-import TwitterCardMeta from "../components/meta/TwitterCardMeta";
-import { SocialList } from "../components/SocialList";
+import * as React from 'react';
+import {GetStaticProps, NextPage} from 'next';
+import MainBanner from '../components/Home/MainBanner';
+import WhyChooseUs from '../components/Home/WhyChooseUs';
+import News from '../components/NewsList';
+import { listPostContent, PostContent } from "../lib/posts";
+import { listTags } from "../lib/tags";
+import Layout from "../layouts/main";
 
-export default function Index() {
-  return (
-    <Layout>
-      <BasicMeta url={"/"} />
-      <OpenGraphMeta url={"/"} />
-      <TwitterCardMeta url={"/"} />
-      <div className="container">
-        <div>
-          <h1>
-            Hi, We're Next.js & Netlify<span className="fancy">.</span>
-          </h1>
-          <span className="handle">@nextjs-netlify-blog</span>
-          <h2>A blog template with Next.js and Netlify.</h2>
-          <SocialList />
-        </div>
-      </div>
-      <style jsx>{`
-        .container {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex: 1 1 auto;
-          padding: 0 1.5rem;
-        }
-        h1 {
-          font-size: 2.5rem;
-          margin: 0;
-          font-weight: 500;
-        }
-        h2 {
-          font-size: 1.75rem;
-          font-weight: 400;
-          line-height: 1.25;
-        }
-        .fancy {
-          color: #15847d;
-        }
-        .handle {
-          display: inline-block;
-          margin-top: 0.275em;
-          color: #9b9b9b;
-          letter-spacing: 0.05em;
-        }
+type Props = {
+    posts: PostContent[];
+};
 
-        @media (min-width: 769px) {
-          h1 {
-            font-size: 3rem;
-          }
-          h2 {
-            font-size: 2.25rem;
-          }
-        }
-      `}</style>
-    </Layout>
-  );
-}
+const Index: NextPage<Props> = ({posts}: Props) => {
+    return (
+        <Layout>
+            <MainBanner />
+            <WhyChooseUs />
+            <section className="news-area pt-100 pb-70">
+                <div className="container">
+                    <div className="section-title">
+                        <span>Latest News</span>
+                        <h2>Our Recent News </h2>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aut ipsum fugit temporibus possimus itaque accusamus voluptatibus dignissimos nobis eaque.</p>
+                    </div>
+                    <News posts={posts} />
+                </div>
+            </section>
+        </Layout>
+    )
+};
+
+export const getStaticProps: GetStaticProps = async () => {
+    const posts = listPostContent(1, 3);
+    const tags = listTags();
+    const pagination = {
+        current: 1,
+        pages: 3,
+    };
+    return {
+        props: {
+            posts,
+            tags,
+            pagination,
+        },
+    };
+};
+
+export default Index;
